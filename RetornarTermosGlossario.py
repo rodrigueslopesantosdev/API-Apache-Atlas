@@ -8,7 +8,6 @@ Data de criação: 08/10/2019
 import csv
 from CallAPIRest import CallAPIRest
 from Funcoes import Funcoes
-import datetime
 import json
 import argparse
 
@@ -28,58 +27,30 @@ parser.add_argument("--pt", default=1, help="Porta de conexão.")
 parser.add_argument("--us", default=1, help="Usuário para autenticação.")
 parser.add_argument("--pw", default=1, help="Password para autenticação.")
 parser.add_argument("--gn", default=1, help="Nome do glossário.")
-parser.add_argument("--dc", default=1, help="Nome do metadado de definição do dado.")
-parser.add_argument("--cf", default=1, help="Nome da classificação.")
-parser.add_argument("--ph", default=1, help="Caminho do arquivo CSV.")
-parser.add_argument("--dl", default=1, help="Delimitador do arquivo CSV")
+"""
 
 apiPath = '/api/atlas/v2'
 headers = {'content-type': 'application/json;charset=utf8'}
-
+"""
 args = parser.parse_args()
 hostname = args.ht
 port = args.pt
 username = args.us
 password = args.pw
 glossaryName = args.gn
-dataDefColName = args.dc
-classificationName = args.cf
-pathCSVFile = args.ph
-delimiter = args.dl
-
-encodingCSVFile='utf-8'
 """
 
-hostname = "172.16.50.44"
-port = "21000"
-username = "admin"
-password = "admin"
-glossaryName = "Glossario_D580"
-dataDefColName = "Nome"
-classificationName = "Definicao_Negocios"
-#pathCSVFile = "C:\Tiago\Apache_Atlas\Carga_Glossarios\src\ArqGlossario_Novo.csv"
-pathCSVFile = "C:\Tiago\Apache_Atlas\Carga_Glossarios\src\ArqGlossario_Novo_v17.csv"
-delimiter = ";"
-#encodingCSVFile= "utf-8"
-encodingCSVFile = "unicode_escape"
+hostname = '172.16.50.47'
+port = '21000'
+username = 'admin'
+password = 'admin'
+glossaryName = 'Glossario D580'
 
-headers = {'content-type': 'application/json;charset=utf8'}
-apiPath = '/api/atlas/v2'
-
-alfabeto = Funcoes.criarAlfabetoUnicode()
+encodingCSVFile = 'utf-8'
 
 apiRest = CallAPIRest(apiPath, hostname, port, username, password, headers)
 
-csvFile = csv.DictReader(open(pathCSVFile, encoding=encodingCSVFile), delimiter=delimiter)
+listGuids = apiRest.getDataFieldsTable('Glossario D580', 'faturas_pf')
 
-saidaArquivo = open("C:\Tiago\Apache_Atlas\Carga_Glossarios\src\SAIDA_PROGRAMA.json", "w")
-saidaArquivo.write(str(datetime.datetime.now())+"\n")
-
-resultRequest = apiRest.createGlossaryTermsAssociation(glossaryName, dataDefColName, classificationName, csvFile, alfabeto)
-saidaArquivo.write(str(resultRequest)+"\n")
-
-saidaArquivo.write(str(datetime.datetime.now())+"\n")
-saidaArquivo.close()
-
-print(apiRest.getStatusCode())
-print (resultRequest)
+for pos in listGuids:
+    apiRest.createGlossaryTermAssociation ('zona_crua', '', pos)

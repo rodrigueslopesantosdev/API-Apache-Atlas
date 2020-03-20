@@ -1,50 +1,30 @@
 # -*- coding: utf-8 -*-
 """
-Programa Python para adicionar novos dados ao glossário.
+Created on Tue Oct  8 15:08:57 2019
 
-Data de criação: 08/10/2019
-@author: Tiago Rodrigues Lopes dos Santos
+@author: tiago.santos
 """
 import csv
 from CallAPIRest import CallAPIRest
-import argparse
 #import normalize
 
 apiPath = '/api/atlas/v2'
+hostname='srvpednd01.axxiom1.local'
+port='21000'
+username='admin'
+password='Axxiom@2019'
+glossaryName='Glossario D580'
+dataDefColName='Nome do dado'
+
+
 headers = {'content-type': 'application/json;charset=utf8'}
-
-parser = argparse.ArgumentParser(description='Script para adição de dados em um glossário no Apache Atlas')
-
-parser.add_argument("--ht", default=1, help="Hostname")
-parser.add_argument("--pt", default=1, help="Porta de conexão.")
-parser.add_argument("--us", default=1, help="Usuário para autenticação.")
-parser.add_argument("--pw", default=1, help="Password para autenticação.")
-parser.add_argument("--gn", default=1, help="Nome do glossário.")
-parser.add_argument("--dc", default=1, help="Nome do metadado de definição do dado.")
-parser.add_argument("--ph", default=1, help="Caminho do arquivo CSV.")
-parser.add_argument("--dl", default=1, help="Delimitador do arquivo CSV")
-
-
-
-args = parser.parse_args()
-hostname = args.ht
-port = args.pt
-username = args.us
-password = args.pw
-glossaryName = args.gn
-dataDefColName = args.dc
-pathCSVFile = args.ph
-delimiter= args.dl
-
-encodingCSVFile='utf-8'
 
 apiRest = CallAPIRest(apiPath, hostname, port, username, password, headers)
 
-#arquivoCSV = csv.DictReader (open ("C:\Tiago\Apache_Atlas\GlossarioNegocio.csv", encoding = encodingCSVFile, delimiter=';'))
-csvFile = csv.DictReader (open (pathCSVFile, encoding = encodingCSVFile), delimiter=delimiter)
+arquivoCSV = csv.DictReader (open ("C:\Tiago\Apache_Atlas\GlossarioNegocio.csv"))
 
-resultRequest = apiRest.createGlossaryTerms (csvFile, dataDefColName, glossaryName)
+resultRequest = apiRest.createGlossaryTerms (arquivoCSV, dataDefColName, glossaryName)
 
 print(apiRest.getStatusCode())
 
-print (resultRequest.text)
+print (resultRequest)
