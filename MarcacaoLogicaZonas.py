@@ -47,7 +47,7 @@ descricao = args.ds
 localDataLake = args.ph
 
 #lista de arquivos passada como parametro
-fileNameProcurado = '/home/nifi/scripts/arquivosRespostaGlue/crw_'+tabela+'_READY_MARCACAO'
+fileNameProcurado = '<path>/crw_'+tabela+'_READY_MARCACAO'
 
 #Loop de espera dos arquivos
 while contCicloTimeOut < cicloTimeOut:

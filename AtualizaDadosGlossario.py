@@ -9,20 +9,20 @@ from FuncoesCargaGlossario import *
 from ConexaoSSH import ConexaoSSH
 import json
 
-hostname='srvpednd01.axxiom1.local'
-port='21000'
-username='admin'
-password='Axxiom@2019'
-nomeGlossario='Glossario D580'
+hostname=''
+port=''
+username=''
+password=''
+nomeGlossario=''
 
-hostnameSSH='192.168.46.135'
-portSSH='22'
-usernameSSH='root'
-passwordSSH='cenhaPadra0'
+hostnameSSH=''
+portSSH=''
+usernameSSH=''
+passwordSSH=''
 
 conexao = ConexaoSSH(hostnameSSH,portSSH,usernameSSH,passwordSSH)
 
-arquivoCSV = csv.DictReader (open ("C:\Tiago\Apache_Atlas\GlossarioNegocio.csv"))
+arquivoCSV = csv.DictReader (open ("<path>"))
 
 for posMeta in arquivoCSV:
     comando = atualizaValoresAtributosDados (hostname, port, username, password, posMeta , nomeGlossario)

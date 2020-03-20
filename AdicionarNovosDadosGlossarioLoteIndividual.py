@@ -14,13 +14,13 @@ import time
 from dill.tests.test_recursive import obj1
 
 
-hostname = "172.16.50.44"
-port = "21000"
-username = "admin"
-password = "admin"
-glossaryName = "Glossario_D580"
-dataDefColName = "Nome"
-pathCSVFile = "C:\Tiago\Apache_Atlas\Carga_Glossarios\src\ArqGlossario_Novo_v17.csv"
+hostname = ""
+port = ""
+username = ""
+password = ""
+glossaryName = ""
+dataDefColName = ""
+pathCSVFile = ""
 delimiter = ";"
 
 #encodingCSVFile = "Windows-1252"

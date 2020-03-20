@@ -21,7 +21,7 @@ import argparse
 #             fileWriter.write(Funcoes.remover_acentos(line))
 #
 # fileWriter.close()
-"""
+
 parser = argparse.ArgumentParser(description='Script para criar uma classificacao no Apache Atlas')
 parser.add_argument("--ht", default=1, help="Hostname")
 parser.add_argument("--pt", default=1, help="Porta de conexão.")
@@ -48,20 +48,7 @@ pathCSVFile = args.ph
 delimiter = args.dl
 
 encodingCSVFile='utf-8'
-"""
 
-hostname = "172.16.50.44"
-port = "21000"
-username = "admin"
-password = "admin"
-glossaryName = "Glossario_D580"
-dataDefColName = "Nome"
-classificationName = "Definicao_Negocios"
-#pathCSVFile = "C:\Tiago\Apache_Atlas\Carga_Glossarios\src\ArqGlossario_Novo.csv"
-pathCSVFile = "C:\Tiago\Apache_Atlas\Carga_Glossarios\src\ArqGlossario_Novo_v17.csv"
-delimiter = ";"
-#encodingCSVFile= "utf-8"
-encodingCSVFile = "unicode_escape"
 
 headers = {'content-type': 'application/json;charset=utf8'}
 apiPath = '/api/atlas/v2'

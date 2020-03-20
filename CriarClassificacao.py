@@ -33,18 +33,6 @@ delimiter = args.dl
 encodingCSVFile='utf-8'
 headers = {'content-type': 'application/json;charset=utf8'}
 apiPath = '/api/atlas/v2'
-#
-# args = parser.parse_args()
-# hostname = "ec2-3-86-115-15.compute-1.amazonaws.com"
-# port = "21000"
-# username = "admin"
-# password = "admin"
-# classificationName = "DefinicoesNegocio"
-# classDescription = "Definicoes de negocio dos dados do projeto D580."
-# #pathCSVFile = "C:\Tiago\Apache_Atlas\ArqGlossario_Novo_Teste.csv"
-# pathCSVFile = "C:\Tiago\Apache_Atlas\GlossarioNegocio.csv"
-# delimiter= ","
-
 
 apiRest = CallAPIRest(apiPath, hostname, port, username, password, headers)
 

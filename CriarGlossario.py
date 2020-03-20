@@ -10,12 +10,12 @@ import json
 import normalize
 
 apiPath = '/api/atlas/v2'
-hostname='srvpednd01.axxiom1.local'
-port='21000'
-username='admin'
-password='Axxiom@2019'
-glossaryName='Glossario D580 Teste'
-shortDescription='Glossario de termos de negãcio do projeto D580'
+hostname=''
+port=''
+username=''
+password=''
+glossaryName=''
+shortDescription=''
 headers = {'content-type': 'application/json;charset=utf8'}
 
 apiRest = CallAPIRest(apiPath, hostname, port, username, password, headers)

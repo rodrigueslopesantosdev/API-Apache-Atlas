@@ -9,11 +9,11 @@ from CallAPIRest import CallAPIRest
 #import normalize
 
 apiPath = '/api/atlas/v2'
-hostname='srvpednd01.axxiom1.local'
-port='21000'
-username='admin'
-password='Axxiom@2019'
-glossaryName='Glossario D580'
+hostname=''
+port=''
+username=''
+password=''
+glossaryName=''
 dataDefColName='Nome do dado'
 
 
