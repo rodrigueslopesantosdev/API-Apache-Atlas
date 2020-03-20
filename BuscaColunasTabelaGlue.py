@@ -21,11 +21,11 @@ AWS_SECRET_ACCESS_KEY = args.saKey
 AWS_DEFAULT_REGION = args.reg
 """
 
-tabela = "faturas_pf"
-dataBase = "axxiom"
-AWS_ACCESS_KEY_ID = "AKIA5XU3ATPDZKQJ77HP"
-AWS_SECRET_ACCESS_KEY = "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"
-AWS_DEFAULT_REGION = "us-east-1"
+tabela = ""
+dataBase = ""
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = ""
+AWS_DEFAULT_REGION = ""
 
 client = boto3.client('glue',
                       aws_access_key_id=AWS_ACCESS_KEY_ID,
@@ -38,4 +38,3 @@ result=client.get_table(DatabaseName=dataBase, Name=tabela)
 listCampos = []
 
 listCampos = result["Table"]["StorageDescriptor"]["Columns"]
-
